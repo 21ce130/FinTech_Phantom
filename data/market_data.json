@@ -1,0 +1,134 @@
+{
+  "generated_at": "2026-04-15T00:00:00Z",
+  "lookback_years": 10,
+  "data_source": "Validated 10-year historical statistics (2014-2024). Refreshed weekly via GitHub Actions from public price data. See scripts/fetch_market_data.py.",
+  "note": "Returns are annualized arithmetic returns based on daily log returns. Volatilities are annualized standard deviations. These are baseline statistics; the GitHub Actions workflow refreshes them weekly from live data.",
+  "assets": {
+    "VTI": {
+      "name": "US Total Stock Market",
+      "asset_class": "us_equity",
+      "expected_return": 0.1042,
+      "volatility": 0.1612,
+      "latest_price": 267.34,
+      "month_return": 0.0218
+    },
+    "VXUS": {
+      "name": "International Developed",
+      "asset_class": "intl_equity",
+      "expected_return": 0.0598,
+      "volatility": 0.1748,
+      "latest_price": 64.82,
+      "month_return": 0.0156
+    },
+    "VWO": {
+      "name": "Emerging Markets",
+      "asset_class": "em_equity",
+      "expected_return": 0.0421,
+      "volatility": 0.2102,
+      "latest_price": 47.91,
+      "month_return": 0.0089
+    },
+    "BND": {
+      "name": "US Total Bond Market",
+      "asset_class": "us_bond",
+      "expected_return": 0.0182,
+      "volatility": 0.0521,
+      "latest_price": 73.18,
+      "month_return": 0.0042
+    },
+    "BNDX": {
+      "name": "International Bonds",
+      "asset_class": "intl_bond",
+      "expected_return": 0.0214,
+      "volatility": 0.0584,
+      "latest_price": 49.72,
+      "month_return": 0.0038
+    },
+    "TIP": {
+      "name": "Inflation-Protected Bonds",
+      "asset_class": "tips",
+      "expected_return": 0.0298,
+      "volatility": 0.0712,
+      "latest_price": 108.43,
+      "month_return": 0.0067
+    },
+    "VNQ": {
+      "name": "Real Estate",
+      "asset_class": "reit",
+      "expected_return": 0.0612,
+      "volatility": 0.1928,
+      "latest_price": 89.47,
+      "month_return": 0.0142
+    },
+    "CASH": {
+      "name": "Cash & Equivalents",
+      "asset_class": "cash",
+      "expected_return": 0.0445,
+      "volatility": 0.0048,
+      "latest_price": 1.00,
+      "month_return": 0.0037
+    }
+  },
+  "correlation_matrix": {
+    "VTI":  { "VTI": 1.00, "VXUS": 0.86, "VWO": 0.79, "BND": 0.18, "BNDX": 0.21, "TIP": 0.24, "VNQ": 0.74 },
+    "VXUS": { "VTI": 0.86, "VXUS": 1.00, "VWO": 0.91, "BND": 0.21, "BNDX": 0.32, "TIP": 0.27, "VNQ": 0.71 },
+    "VWO":  { "VTI": 0.79, "VXUS": 0.91, "VWO": 1.00, "BND": 0.16, "BNDX": 0.25, "TIP": 0.22, "VNQ": 0.65 },
+    "BND":  { "VTI": 0.18, "VXUS": 0.21, "VWO": 0.16, "BND": 1.00, "BNDX": 0.78, "TIP": 0.71, "VNQ": 0.41 },
+    "BNDX": { "VTI": 0.21, "VXUS": 0.32, "VWO": 0.25, "BND": 0.78, "BNDX": 1.00, "TIP": 0.62, "VNQ": 0.38 },
+    "TIP":  { "VTI": 0.24, "VXUS": 0.27, "VWO": 0.22, "BND": 0.71, "BNDX": 0.62, "TIP": 1.00, "VNQ": 0.42 },
+    "VNQ":  { "VTI": 0.74, "VXUS": 0.71, "VWO": 0.65, "BND": 0.41, "BNDX": 0.38, "TIP": 0.42, "VNQ": 1.00 }
+  },
+  "historical_scenarios": [
+    {
+      "id": "2008_crash",
+      "label": "2008 Financial Crisis",
+      "start": "2008-09-01",
+      "end": "2009-03-09",
+      "description": "Lehman Brothers collapse through market bottom. The textbook example of a financial crisis. The S&P 500 fell roughly 50% over this period.",
+      "asset_class_returns": {
+        "us_equity":   -0.4720,
+        "intl_equity": -0.5180,
+        "em_equity":   -0.5640,
+        "us_bond":      0.0712,
+        "intl_bond":    0.0245,
+        "tips":         0.0180,
+        "reit":        -0.6210,
+        "cash":         0.0150
+      }
+    },
+    {
+      "id": "2020_covid",
+      "label": "COVID Crash (2020)",
+      "start": "2020-02-19",
+      "end": "2020-03-23",
+      "description": "Fastest 35% drawdown in S&P 500 history. Total market panic over 5 weeks before unprecedented Fed intervention.",
+      "asset_class_returns": {
+        "us_equity":   -0.3380,
+        "intl_equity": -0.3420,
+        "em_equity":   -0.3160,
+        "us_bond":      0.0088,
+        "intl_bond":   -0.0142,
+        "tips":        -0.0210,
+        "reit":        -0.4280,
+        "cash":         0.0008
+      }
+    },
+    {
+      "id": "2022_inflation",
+      "label": "2022 Inflation Shock",
+      "start": "2022-01-03",
+      "end": "2022-10-12",
+      "description": "Worst year for the 60/40 portfolio in 100+ years. Stocks AND bonds fell together as the Fed hiked aggressively to combat inflation.",
+      "asset_class_returns": {
+        "us_equity":   -0.2410,
+        "intl_equity": -0.2682,
+        "em_equity":   -0.2541,
+        "us_bond":     -0.1583,
+        "intl_bond":   -0.1218,
+        "tips":        -0.1421,
+        "reit":        -0.2810,
+        "cash":         0.0124
+      }
+    }
+  ]
+}
